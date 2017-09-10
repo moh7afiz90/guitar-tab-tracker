@@ -2,12 +2,6 @@
   <div>
     <h1>Register</h1>
     <input 
-      type="name"
-      name="name"
-      v-model="name"
-      placeholder="First Name" />
-    <br>
-    <input 
       type="email"
       name="email"
       v-model="email"
@@ -19,6 +13,8 @@
       v-model="password"
       placeholder="password" />
     <br>
+    <div class="error" v-html="error"></div>
+    <br>
     <button @click="register">Register</button>
 
   </div>
@@ -26,29 +22,32 @@
 
 <script>
 import AuthService from '@/services/AuthService'
-export default{
+export default {
   data () {
     return {
-      name: '',
       email: '',
-      password: ''
+      password: '',
+      error: null
     }
   },
   methods: {
     async register () {
-      const response = await AuthService.register({
-        name: this.name,
-        email: this.email,
-        password: this.password
-      })
-      console.log(response.data)
+      try {
+        await AuthService.register({
+          email: this.email,
+          password: this.password
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      }
     }
   }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .error {
+    color:red;
+  }
 </style>

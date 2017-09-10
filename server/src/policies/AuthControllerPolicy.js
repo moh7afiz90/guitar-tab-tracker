@@ -1,16 +1,16 @@
 const Joi = require('joi')
-// Joi is Framkework used for validating req.body, req.query and request.parameter
 
-module.export = {
+module.exports = {
   register (req, res, next) {
     const schema = {
-      email: Joi.string().emai(),
+      email: Joi.string().email(),
       password: Joi.string().regex(
         new RegExp('^[a-zA-Z0-9]{8,32}$')
-        // Password combaination 
       )
     }
-    const { error, value } = Joi.validate(req.body, schema)
+
+    const {error, value} = Joi.validate(req.body, schema)
+
     if (error) {
       switch (error.details[0].context.key) {
         case 'email':
@@ -21,7 +21,7 @@ module.export = {
         case 'password':
           res.status(400).send({
             error: `The password provided failed to match the following rules:
-              <br>    
+              <br>
               1. It must contain ONLY the following characters: lower case, upper case, numerics.
               <br>
               2. It must be at least 8 characters in length and not greater than 32 characters in length.
@@ -35,7 +35,6 @@ module.export = {
       }
     } else {
       next()
-    //   to invoke the second method
     }
   }
 }
