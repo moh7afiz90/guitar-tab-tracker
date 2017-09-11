@@ -8,7 +8,7 @@
     "lint": "./node_modules/.bin/eslint **/*.js"
   },
   "keywords": [],
-  "author": "Mohanad Elhag",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

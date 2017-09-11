@@ -2,7 +2,6 @@ import axios from 'axios'
 
 export default () => {
   return axios.create({
-    // connect to the backend
-    baseURL: `http://localhost:8801/`
+    baseURL: `http://localhost:8000/`
   })
 }
