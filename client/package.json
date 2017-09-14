@@ -2,7 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Cody Seibert <cseibert113@gmail.com>",
+  "author": "Mohanad Elhag <moh.7afiz@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
